@@ -1,4 +1,4 @@
-﻿import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { Text, TouchableOpacity, View, Alert, StyleSheet } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
@@ -15,11 +15,26 @@ const BROWN_MID  = '#8B5E3C';
 const CARAMEL    = '#C49A6C';
 const PASTEL_YLW = '#FDF3D0';
 
+interface AuthState {
+    data?: {
+        user?: {
+            name?: string;
+        };
+    };
+}
+
+interface RootStackParamList {
+    [ROUTES.HOME]: undefined;
+    [ROUTES.PROFILE]: undefined;
+    [ROUTES.LOGIN]: undefined;
+    [ROUTES.REGISTER]: undefined;
+}
+
 const HomeScreen = () => {
-    const navigation = useNavigation();
+    const navigation = useNavigation<any>();
     const dispatch = useDispatch();
-    const { data } = useSelector((state) => state.auth);
-    const [clicked, setClicked] = useState(0);
+    const { data } = useSelector((state: any) => state.auth) as AuthState;
+    const [clicked, setClicked] = useState<number>(0);
 
     const handleLogout = () => {
         Alert.alert(
@@ -48,16 +63,16 @@ const HomeScreen = () => {
             <View style={styles.blobBottomLeft} />
             <View style={styles.blobMidRight} />
 
-            <AppHeader title="Pets Pantry" subtitle={`Welcome, ${data?.user?.name || 'User'}! ðŸ¾`} />
+            <AppHeader title="Pets Pantry" subtitle={`Welcome, ${data?.user?.name || 'User'}! 🐾`} />
 
             <View style={styles.container}>
 
                 {/* greeting banner */}
                 <View style={styles.bannerCard}>
-                    <Text style={styles.bannerEmoji}> ðŸ¶ðŸ±</Text>
+                    <Text style={styles.bannerEmoji}> 🐶🐱</Text>
                     <View style={{ flex: 1 }}>
                         <Text style={styles.bannerTitle}>Hello, {data?.user?.name || 'Friend'}!</Text>
-                        <Text style={styles.bannerSub}>Your pets deserve the best â­</Text>
+                        <Text style={styles.bannerSub}>Your pets deserve the best ⭐</Text>
                     </View>
                 </View>
 
@@ -75,7 +90,7 @@ const HomeScreen = () => {
                         activeOpacity={0.85}
                     >
                         <View style={styles.profileBtn}>
-                            <Text style={styles.profileBtnIcon}> ðŸ¾</Text>
+                            <Text style={styles.profileBtnIcon}> 🐾</Text>
                             <Text style={styles.profileBtnText}>Go to Profile</Text>
                         </View>
                     </TouchableOpacity>
@@ -252,4 +267,3 @@ const styles = StyleSheet.create({
 });
 
 export default HomeScreen;
-

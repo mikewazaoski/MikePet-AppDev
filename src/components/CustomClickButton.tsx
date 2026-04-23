@@ -1,10 +1,15 @@
-﻿import React, { useState } from 'react';
-import { TouchableOpacity, Text, Alert, View } from 'react-native';
+import React, { useState } from 'react';
+import { TouchableOpacity, Text, Alert, View, StyleSheet } from 'react-native';
 
+interface CustomClickButtonProps {
+    onPress?: () => void;
+    containerStyle?: any;
+    textStyle?: any;
+    label?: string;
+}
 
-
-const CustomClickButton = ({ onPress, containerStyle, textStyle, label = "Click Me" }) => {
-    const [clicked, setClicked] = useState(0);    
+const CustomClickButton = ({ onPress, containerStyle, textStyle, label = "Click Me" }: CustomClickButtonProps) => {
+    const [clicked, setClicked] = useState<number>(0);    
     const handlePress = () => {
         Alert.alert('HELLO ATECCO');
         setClicked(clicked + 1);
@@ -31,5 +36,3 @@ const CustomClickButton = ({ onPress, containerStyle, textStyle, label = "Click 
 };
 
 export default CustomClickButton;
-
-
