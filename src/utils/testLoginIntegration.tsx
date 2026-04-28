@@ -50,7 +50,7 @@ export const testLoginFlow = async () => {
 // Manual test checklist
 export const loginChecklist = {
   api: {
-    'âœ… API function exists': 'src/app/api/auth.js',
+    'âœ… API function exists': 'src/app/api/auth.tsx',
     'âœ… Uses username/password': 'Updated from email',
     'âœ… Handles fetch requests': 'POST to /api/login',
     'âœ… Error handling': 'Catches and throws errors',

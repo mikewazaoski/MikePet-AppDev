@@ -1,12 +1,17 @@
 ﻿import { Platform, Text, View, StyleSheet } from 'react-native';
 
+interface AppHeaderProps {
+    title?: string;
+    subtitle?: string;
+}
+
 const PRIMARY_COLOR  = '#5C3D1E';
 const SUBTITLE_COLOR = '#C49A6C';
 const BORDER         = '#F0D9A8';
 const PASTEL_YLW     = '#FDF3D0';
 const CREAM          = '#FFF8E7';
 
-const AppHeader = ({ title, subtitle }) => {
+const AppHeader = ({ title, subtitle }: AppHeaderProps) => {
     return (
         <View style={styles.wrapper}>
 
