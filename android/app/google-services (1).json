@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "628176717232",
+    "project_id": "mikepet-36b37",
+    "storage_bucket": "mikepet-36b37.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:628176717232:android:baf6641168e14f2859c275",
+        "android_client_info": {
+          "package_name": "com.mikepet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "628176717232-beb1ajke07lipebdsc8kuf0ra6vdesoa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mikepet",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "628176717232-o20lepq64si986v8vqs23lf2vnbf55ir.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZjQiWYpvh3rf85buA8brFoqdchXn7oTE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "628176717232-o20lepq64si986v8vqs23lf2vnbf55ir.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
