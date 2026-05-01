@@ -1,14 +1,24 @@
 import { useState, useEffect } from 'react';
 import { Alert, Text, TouchableOpacity, View, StyleSheet } from 'react-native';
+import { GoogleSigninButton } from '@react-native-google-signin/google-signin';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 import AppHeader from '../../components/AppHeader';
 import CustomButton from '../../components/CustomButton';
 import CustomTextInput from '../../components/CustomTextInput';
 import { authLogin } from '../../app/actions';
 import { ROUTES } from '../../utils';
+
+type AuthStackParamList = {
+    [ROUTES.LOGIN]: undefined;
+    [ROUTES.REGISTER]: undefined;
+    [ROUTES.HOME]: undefined;
+};
+
+type AuthNavigationProp = StackNavigationProp<AuthStackParamList>;
 
 const CREAM      = '#FFFDF4';
 const CARD_BG    = '#FFF8E7';
@@ -23,9 +33,9 @@ const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
-    const navigation = useNavigation();
+    const navigation = useNavigation<AuthNavigationProp>();
     
-    const { isLoading, isError, error, data } = useSelector((state) => state.auth);
+    const { isLoading, isError, error, data } = useSelector((state: any) => state?.auth || {});
 
     useEffect(() => {
         if (data && data.token) {
@@ -60,7 +70,7 @@ const Login = () => {
                             value={password}
                             onChangeText={setPassword}
                             secureTextEntry={true}
-                            containerStyle={[styles.inputContainer, { marginBottom: 0 }]}
+                            containerStyle={{ ...styles.inputContainer, marginBottom: 0 }}
                             textStyle={styles.inputText}
                         />
                     </View>
@@ -80,7 +90,33 @@ const Login = () => {
                             dispatch(authLogin({ username, password }));
                         }}
                     />
-                
+
+                    <GoogleSigninButton
+                        //  style={{ width: 212, height: 48 }}
+                         size={GoogleSigninButton.Size.Wide}
+                         color={GoogleSigninButton.Color.Dark}
+                         onPress={async () => {
+                          // await _signInwithGoogle().then((result) =>{
+                          //   console.log(result);
+                          // })
+                          // .catch((err) => {
+                          //   Alert.alert('Error', `${err.message}`);
+                          // }).finally(() => {
+                          //   Alert.alert('Success', 'Google Sign-In successful');
+                          // });
+
+                          Alert.alert(
+                            'Google Sign-In',
+                            'Google Sign-In process initiated'
+                          );
+                        }}
+                       />
+
+                       <View style={{
+                        flexDirection: 'row',
+                        justifyContent: 'center',
+                        alignItems: 'center',}}>
+                       </View>
 
                     {isError && (
                         <Text style={styles.errorText}>

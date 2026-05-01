@@ -3,12 +3,21 @@ import { Alert, Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 import AppHeader from '../../components/AppHeader';
 import CustomButton from '../../components/CustomButton';
 import CustomTextInput from '../../components/CustomTextInput';
 import { authRegister } from '../../app/actions';
 import { ROUTES } from '../../utils';
+
+type AuthStackParamList = {
+    [ROUTES.LOGIN]: undefined;
+    [ROUTES.REGISTER]: undefined;
+    [ROUTES.HOME]: undefined;
+};
+
+type AuthNavigationProp = StackNavigationProp<AuthStackParamList>;
 
 const CREAM      = '#FFFDF4';
 const CARD_BG    = '#FFF8E7';
@@ -25,9 +34,9 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const dispatch = useDispatch();
-    const navigation = useNavigation();
+    const navigation = useNavigation<AuthNavigationProp>();
     
-    const { isRegistering, isRegisterError, registerError, registerData } = useSelector((state) => state.auth);
+    const { isRegistering, isRegisterError, registerError, registerData } = useSelector((state: any) => state?.auth || {});
 
     useEffect(() => {
         if (registerData && registerData.token) {
@@ -98,7 +107,7 @@ const Register = () => {
                             value={confirmPassword}
                             onChangeText={setConfirmPassword}
                             secureTextEntry={true}
-                            containerStyle={[styles.inputContainer, { marginBottom: 0 }]}
+                            containerStyle={{ ...styles.inputContainer, marginBottom: 0 }}
                             textStyle={styles.inputText}
                         />
                     </View>

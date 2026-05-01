@@ -1,7 +1,16 @@
 ﻿import { Text, View } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
+import { TextStyle, ViewStyle } from 'react-native';
 
-
+interface CustomTextInputProps {
+    label?: string;
+    placeholder?: string;
+    value?: string;
+    onChangeText?: (text: string) => void;
+    textStyle?: TextStyle;
+    containerStyle?: ViewStyle;
+    secureTextEntry?: boolean;
+}
 
 const CustomTextInput = ({
     label,
@@ -11,7 +20,7 @@ const CustomTextInput = ({
     textStyle,
     containerStyle,
     secureTextEntry = false,
-}) => {
+}: CustomTextInputProps) => {
     return (
         <View style={containerStyle}>
             <Text

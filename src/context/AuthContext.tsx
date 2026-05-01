@@ -1,8 +1,14 @@
-﻿import { createContext, useContext, useState } from 'react';
+﻿import { createContext, useContext, useState, ReactNode } from 'react';
 
-const AuthContext = createContext(null);
+interface AuthContextType {
+    isLoggedIn: boolean;
+    login: () => void;
+    logout: () => void;
+}
 
-export const AuthProvider = ({ children }) => {
+const AuthContext = createContext<AuthContextType | null>(null);
+
+export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const login = () => setIsLoggedIn(true);

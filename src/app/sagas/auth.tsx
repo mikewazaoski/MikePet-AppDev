@@ -11,7 +11,7 @@ import {
 } from '../actions';
 import { userLogin as userLoginApi, userRegister as userRegisterApi } from '../api/auth';
 
-export function* userLoginAsync(action) {
+export function* userLoginAsync(action: { type: string; payload: { username: string; password: string } }): Generator<any, void, unknown> {
     console.log('User login saga started: ', action);
 
     try {
@@ -27,12 +27,12 @@ export function* userLoginAsync(action) {
         console.log('User login saga error: ', error);
         yield put({
             type: USER_LOGIN_ERROR,
-            error: error?.message || 'Login failed',
+            error: (error as Error)?.message || 'Login failed',
         });
     }
 }
 
-export function* userRegisterAsync(action) {
+export function* userRegisterAsync(action: { type: string; payload: { name: string; username: string; password: string } }): Generator<any, void, unknown> {
     console.log('User register saga started: ', action);
 
     try {
@@ -48,7 +48,7 @@ export function* userRegisterAsync(action) {
         console.log('User register saga error: ', error);
         yield put({
             type: USER_REGISTER_ERROR,
-            error: error?.message || 'Registration failed',
+            error: (error as Error)?.message || 'Registration failed',
         });
     }
 }

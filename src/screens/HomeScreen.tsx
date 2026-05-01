@@ -33,7 +33,7 @@ interface RootStackParamList {
 const HomeScreen = () => {
     const navigation = useNavigation<any>();
     const dispatch = useDispatch();
-    const { data } = useSelector((state: any) => state.auth) as AuthState;
+    const { data } = useSelector((state: any) => state?.auth || {}) as AuthState;
     const [clicked, setClicked] = useState<number>(0);
 
     const handleLogout = () => {

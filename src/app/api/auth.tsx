@@ -1,5 +1,5 @@
 ﻿
-export async function userLogin({ username, password }) {
+export async function userLogin({ username, password }: { username: string; password: string }) {
     const BASE_URL = 'http://127.0.0.1';
     
     console.log('Login API call to:', BASE_URL + '/api/login');
@@ -48,7 +48,7 @@ export async function userLogin({ username, password }) {
     }
 }
 
-export async function userRegister({ name, username, password }) {
+export async function userRegister({ name, username, password }: { name: string; username: string; password: string }) {
     const BASE_URL = 'http://127.0.0.1';
     
     console.log('Register API call to:', BASE_URL + '/api/register');

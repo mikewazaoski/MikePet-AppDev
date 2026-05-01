@@ -9,12 +9,12 @@ export const USER_REGISTER_REQUEST = 'USER_REGISTER_REQUEST';
 export const USER_REGISTER_COMPLETE = 'USER_REGISTER_COMPLETE';
 export const USER_REGISTER_ERROR = 'USER_REGISTER_ERROR';
 
-export const authLogin = (payload) => ({
+export const authLogin = (payload: { username: string; password: string }) => ({
   type: USER_LOGIN,
   payload,
 });
 
-export const authRegister = (payload) => ({
+export const authRegister = (payload: { name: string; username: string; email: string; password: string }) => ({
   type: USER_REGISTER,
   payload,
 });

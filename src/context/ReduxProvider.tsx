@@ -6,7 +6,7 @@ import configureStore from '../app/reducers';
 
 const { store, persistor } = configureStore();
 
-const ReduxProvider = ({ children }) => {
+const ReduxProvider = ({ children }: { children: React.ReactNode }) => {
     return (
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>

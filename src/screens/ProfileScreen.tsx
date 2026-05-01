@@ -14,7 +14,7 @@ const WARM_WHITE = '#FFFFFF';
 
 const ProfileScreen = () => {
     const dispatch = useDispatch();
-    const { data } = useSelector((state) => state.auth);
+    const { data } = useSelector((state: any) => state?.auth || {});
 
     const handleLogout = () => {
         Alert.alert(

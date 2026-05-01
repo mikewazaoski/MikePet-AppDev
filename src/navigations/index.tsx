@@ -8,7 +8,7 @@ import AuthNav from './AuthNav';
 import MainNav from './MainNav';
 
 const RootNavigator = () => {
-    const { data } = useSelector((state) => state.auth);
+    const { data } = useSelector((state: any) => state?.auth || {});
     const isLoggedIn = !!(data && data.token);
     
     return isLoggedIn ? <MainNav /> : <AuthNav />;

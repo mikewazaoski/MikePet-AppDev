@@ -11,7 +11,7 @@ const INITIAL_STATE = {
   registerData: null,
 };
 
-export default function reducer(state = INITIAL_STATE, action) {
+export default function reducer(state = INITIAL_STATE, action: any) {
   console.log(action.type);
   switch (action.type) {
     case USER_LOGIN_REQUEST:
