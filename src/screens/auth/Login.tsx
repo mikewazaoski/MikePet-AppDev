@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Alert, Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 import { GoogleSigninButton } from '@react-native-google-signin/google-signin';
-
+import { showError, showInfo, showSuccess } from '../../components/alrtMsg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -105,10 +105,13 @@ const Login = () => {
                           //   Alert.alert('Success', 'Google Sign-In successful');
                           // });
 
-                          Alert.alert(
-                            'Google Sign-In',
-                            'Google Sign-In process initiated'
-                          );
+                          showError({
+                              title: 'Google Sign-In',
+                              message: 'Google Sign-In process initiated',
+                              position: 'top',
+                              //  position: 'bottom',
+                              visibilityTime: 3000,
+                             });
                         }}
                        />
 

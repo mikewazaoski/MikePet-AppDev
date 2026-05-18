@@ -1,10 +1,15 @@
 import React from 'react';
-import { View } from 'react-native';
 
 import AppNav from './src/navigations';
+import Toast from 'react-native-toast-message';
 
 const App = () => {
-  return <AppNav />;
+  return (
+    <>
+      <AppNav />
+      <Toast />
+    </>
+  );
 };
 
 export default App;
